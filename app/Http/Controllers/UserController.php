@@ -9,8 +9,10 @@ use App\Models\User;
 use App\Models\Skill;
 use DataTables;
 use Validator;
+// use SnappyPDF; //import Fungsi PDF from Snappy Package
 use Session;
 use PDF;
+// use PDF; //import Fungsi PDF from DomPDF Package
 
 class UserController extends Controller
 {
@@ -131,19 +133,25 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function generatePDF()
+    public function generatePDF(Request $request)
     {
-        // $ID = $request->userId;
+        $ID = $request->userId;
         // retreive data user using $id records from db
-        // $data = User::findOrFail($ID);
-        $data = User::all();
+        $data = User::findOrFail($ID);
 
         // share data to view
         view()->share('user', $data);
-        $pdf = PDF::loadView('template.download_cv_pdf', ['user' => $data]);
+        // $pdf = PDF::loadView('template.download_cv_pdf', ['user' => $data]);
+        $pdf = PDF::loadView('template.download_cv_pdf', $data);
+
+        //Aktifkan Local File Access supaya bisa pakai file external ( cth File .CSS )
+        $pdf->setOption('enable-local-file-access', true);
+        $pdf->setPaper('a4');
 
         // download PDF file with download method
-        return $pdf->download('cv_mohpais.pdf');
+        return $pdf->stream('cv_'.$data->fullname.'_'.time().'.pdf');
+        // Jika ingin langsung download (tanpai melihat tampilannya terlebih dahulu) kalian bisa pakai fungsi download
+        // return $pdf->download('cv_'.$data->fullname.'_'.time().'.pdf');
     }
 
 

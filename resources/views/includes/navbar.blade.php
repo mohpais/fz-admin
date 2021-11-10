@@ -28,7 +28,7 @@
                     aria-expanded="false">
                     <div class="nav-profile-img">
                         @if (auth()->user()->profile_photo_path)
-                            <img src="{{ $user->profile_photo_path }}" alt="image">
+                            <img src="{{ auth()->user()->profile_photo_path }}" alt="image">
                         @else
                             <img src="{{ asset('panel/images/faces/default.png') }}" alt="image">
                         @endif

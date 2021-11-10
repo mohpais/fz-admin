@@ -1,18 +1,22 @@
 <div class="tab-pane fade p-4 active show" id="resume" role="tabpanel" aria-labelledby="resume-tab" style="background-color: #f4f4f4">
     <div class="w-100 mb-2">
-        <a class="btn btn-sm btn-primary" href="{{ route('users.downloadpdf') }}">
+        {{-- <a class="btn btn-sm btn-primary" href="{{ route('users.downloadpdf') }}">
             <i class="mdi mdi-printer"></i>
             Export to PDF
-        </a>
-        {{-- <a id="printPDF" type="button" class="btn btn-sm btn-primary" onclick="event.preventDefault(); document.getElementById('generate-pdf').submit();"> --}}
+        </a> --}}
+        <button id="printPDF" class="btn btn-sm btn-primary">
+            <i class="mdi mdi-printer"></i>
+            Export to PDF
+        </button>
         {{-- <a class="btn btn-sm btn-primary" onclick="event.preventDefault(); document.getElementById('formGeneratePDF').submit();">
             <i class="mdi mdi-printer"></i>
             Export to PDF
         </a> --}}
-        {{-- <form id="formGeneratePDF" action="{{ route('users.downloadpdf') }}" method="POST" class="d-none">
+        <form id="formGeneratePDF" action="{{ route('users.downloadpdf') }}" method="POST" class="d-none">
             @csrf
-            <input type="hidden" class="form-control" name="userId" id="userId" readonly>
-        </form> --}}
+            <input type="hidden" class="form-control" name="userId" id="userId" value="{{$user->id}}" readonly>
+        </form>
+        
     </div>
     <div class="page border">
         <div class="page__header">
