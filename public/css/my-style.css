@@ -1,0 +1,386 @@
+
+.profile__header {
+    border-radius: 7px;
+  }
+  
+  .profile__header .backdrop {
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    width: 100%;
+    max-height: 250px;
+    height: 150px;
+    background-image: url('../panel/images/dashboard/img_2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; 
+  }
+  
+  .profile__header .img-profile {
+    width: 120px;
+    height: 120px;
+    margin-top: -3.3283rem;
+  }
+  
+  .profile__header .avatar {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e2e2e2;
+    width: 120px; 
+    height: 120px;
+    margin-top: -3.3283rem;
+  }
+  
+  .profile__header .avatar::after {
+    content: "\A";
+    background: rgba(0, 0, 0, 0.5) !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+  
+  .profile__header .avatar.avatar-circle {
+    border-radius: 100%;
+  }
+  
+  .profile__header .avatar .avatar-initial {
+    color: rgb(119, 119, 119);
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    font-size: calc(30px);
+  }
+  
+  .btn-photo {
+    position: absolute;
+    text-align: center;
+    border: 3px solid white !important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn-photo .icon {
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .profile__navbar {
+    border: none;
+  }
+  
+  .profile__navbar .nav-item .nav-link {
+    border: none;
+    font-size: 1rem;
+    color: #343a40;
+  }
+  
+  .profile__navbar .nav-item .nav-link:hover,
+  .profile__navbar .nav-item .nav-link.active {
+    color: #b66dff;
+  }
+
+  /* CV Template for HTML Review */
+  .page {
+    border: 1px rgb(119, 119, 119);
+    border-radius: 8px;
+    height: 870px;
+}
+
+.page__header,
+.page__body {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+.page__header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 35%;
+    background-image: url('../panel/images/dashboard/bg-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    align-items: center;
+}
+
+.page__header .backdrop {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page__header .desc {
+    color: #fff;
+}
+
+.page__header .desc .h2 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.page__header .desc .h6 {
+    letter-spacing: 4px;
+    font-weight: lighter;
+}
+
+.page__body {
+    height: 65%;
+}
+
+.page__body .side__info {
+    background-color: #fff;
+    padding: 1rem 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page__body .side__content {
+    color: #fff;
+}
+
+.page__body .side__info .info__items,
+.page__body .side__content .info__items {
+    width: 100%;
+    margin-bottom: 1.24575rem;
+}
+
+.page__body .side__info .info__items .title,
+.page__body .side__content .info__items .title {
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    line-height: 22px;
+    margin: 0;
+}
+
+.page__body .side__info .info__items .title {
+    color: #7c8587;
+    font-weight: 600;
+}
+
+.page__body .side__content .info__items .title {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.page__body .side__info .info__items .divider,
+.page__body .side__content .info__items .divider {
+    width: 28%;
+    height: 6px;
+    margin: .1567em 0 .36745em;
+}
+
+.page__body .side__info .info__items .divider {
+    background-color: #7c8587;
+}
+
+.page__body .side__content .info__items .divider {
+    background-color: #ffffff;
+}
+
+.page__body .side__info .info__items .profile {
+    width: 100%;
+    text-align: justify;
+}
+
+.page__body .side__info .info__items .profile p:last-child {
+    margin: 0;
+}
+
+.page__body .side__info .info__items .contact {
+    font-size: 14px;
+    margin-bottom: .5rem;
+    width: 100%;
+}
+
+.page__body .side__info .info__items .contact a {
+    width: 100%;
+}
+
+.page__body .side__info .info__items .contact a .icon{
+    float: left;
+    margin-right: 11px;
+    font-size: 18px;
+}
+
+.page__body .side__info .info__items .contact a span {
+    font-size: 11px;
+}
+
+.page__body .side__content .info__items .skills {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.page__body .side__content .info__items .skills li {
+    line-height: 1.4;
+    padding-right: 1.15rem;
+    display: inline-block;
+    height: 20px;
+    text-align: left;
+}
+
+.page__body .side__content .info__items .project,
+.page__body .side__content .info__items .experience {
+    width: 100%;
+    margin: 10px 0 12px;
+    padding: 0;
+}
+
+.page__body .side__content .info__items .project h5.project-title,
+.page__body .side__content .info__items .experience h5.corporate_name {
+    font-size: 12px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.page__body .side__content .info__items .project span,
+.page__body .side__content .info__items .experience p {
+    font-size: 10px;
+}
+
+.page__body .side__content .info__items .project ul li {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.page__header .photo {
+    max-width: 180px;
+    max-height: 180px;
+}
+
+.page__header .photo img {
+    width: 100%;
+    height: 100%;
+}
+
+.page__body .side__content {
+    background-color: #1cb5b9;
+    padding: 1rem 1.8rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-photo {
+    cursor: pointer;
+    position: absolute;
+    text-align: center;
+    border: 3px solid white !important;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+  
+.btn-photo .icon {
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Select 2 CSS */
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #ebedf2 !important;
+    border-radius: 0.75rem !important;
+    padding: 0.94rem 1.375rem !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #b66dff !important;
+    border: 0 !important;
+    margin: 0 !important;
+    color: #fff !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #fff !important;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable,
+.select2-container--default .select2-results__option--selectable:hover,
+.select2-container--default .select2-results__option--selected {
+    background-color: #b66dff !important;
+    color: #fff !important;
+}
+
+hr:not([size]) {
+    height: 1px;
+}
+hr.horizontal {
+    border: 0;
+    margin: .5rem 0 1.25rem;
+    background-color: transparent;
+}
+hr.horizontal.dark {
+    background-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, .5), transparent);
+}
+
+/* Datatables CSS */
+div.dataTables_wrapper div.dataTables_length select {
+    padding: 0.4375rem 1.25rem !important;
+}
+
+@media (max-width: 1280px) {
+    .profile__header .backdrop {
+        height: 100px;
+    }
+
+    .page__header {
+        height: 20%;
+    }
+
+    .page__header .photo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .page__header p {
+        font-size: 12px;
+    }
+
+    .page__body {
+        height: 80%;
+    }
+
+    .page__body .side__info {
+        font-size: 11px;
+        padding-left: .8rem;
+        padding-right: .8rem;
+    }
+
+    .page__body .side__info .profile p {
+        font-size: 11px;
+    }
+
+    .page__body .side__info .info__items .title,
+    .page__body .side__content .info__items .title {
+        font-size: .75rem;
+        letter-spacing: 3px;
+        line-height: 15px;
+    }
+}

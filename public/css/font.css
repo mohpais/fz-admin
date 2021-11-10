@@ -1,0 +1,33 @@
+.font-11 {
+    font-size: 11px !important;
+}
+
+.font-12 {
+    font-size: 12px !important;
+}
+
+.font-14 {
+    font-size: 14px !important;
+}
+
+.font-16 {
+    font-size: 16px !important;
+}
+
+.font-18 {
+    font-size: 18px !important;
+}
+
+.b-radius-05 {
+    border-radius: .5rem !important;
+}
+
+.b-radius-075 {
+    border-radius: .75rem !important;
+}
+
+.text-sm {
+    font-size: .75rem !important;
+    line-height: 1.25;
+    margin: 0 0 .5rem ;
+}
