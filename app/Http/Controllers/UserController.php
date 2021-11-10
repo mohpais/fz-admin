@@ -9,10 +9,8 @@ use App\Models\User;
 use App\Models\Skill;
 use DataTables;
 use Validator;
-// use SnappyPDF; //import Fungsi PDF from Snappy Package
 use Session;
 use PDF;
-// use PDF; //import Fungsi PDF from DomPDF Package
 
 class UserController extends Controller
 {

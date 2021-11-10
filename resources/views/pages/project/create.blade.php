@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @push('styles')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <link href="{{ asset('css/select2.min.css')}}" rel="stylesheet" />
 @endpush
 
 @section('content')
@@ -71,11 +72,11 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <label for="tags">Start At</label>
-                                                    <input type="text" class="form-control b-radius-075 datetimepicker-input" id="start_at" name="join_at" data-toggle="datetimepicker" data-target=".joindate" autocomplete="off" required>
+                                                    <input type="text" class="form-control b-radius-075 datetimepicker-input" id="start_at" name="start_at" data-toggle="datetimepicker" data-target="#start_at" autocomplete="off" required>
                                                 </div>
                                                 <div class="col-6">
-                                                    <label for="tags">End At</label>
-                                                    <input type="text" class="form-control b-radius-075 datetimepicker-input" id="end_at" name="join_at" data-toggle="datetimepicker" data-target=".joindate" autocomplete="off" required>
+                                                    <label for="tags">Finish At</label>
+                                                    <input type="text" class="form-control b-radius-075 datetimepicker-input" id="finish_at" name="finish_at" data-toggle="datetimepicker" data-target="#finish_at" autocomplete="off" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,61 +107,8 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            // Set datepicker
-            setDatePicker('#start_at')
-            setDatePicker('#end_at')
-
-            // Set CKEditor
-            $('#description').ckeditor();
-
-            // Set multiple select
-            // Tags
-            $('.tags-multiple').select2({
-                ajax: {
-                    url: '/skill-resource',
-                    dataType: 'json',
-                    delay: 250,
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {
-                                    text: item.name,
-                                    id: item.id
-                                }
-                            })
-                        };
-                    },
-                    cache: true
-                }
-            });
-
-            // Set checkbox
-            $('.form-check').on('click', function() {
-                if ($('#project_active').is(":checked")) {
-                    $('#project_active').attr('checked', false)
-                } else {
-                    $('#project_active').attr('checked', true)
-                }
-                checkCheckbox()
-            })
-
-            function checkCheckbox() {
-                if ($('#project_active').is(":checked")) {
-                    $('#current').val(1);
-                    $("#end_at").addClass("d-none")
-                } else {
-                    $('#current').val(0);
-                    $("#end_at").removeClass("d-none")
-                }
-            }
-        })
-    </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
+    <script src="{{ asset('panel/js/select2.min.js')}}"></script>
+    <script src="{{ asset('js/content/create-project.js')}}"></script>
+    
 @endpush

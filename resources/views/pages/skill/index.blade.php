@@ -69,13 +69,6 @@
                                 <input type="text" class="form-control" id="name" name="name" required>
                                 <label id="name_error" class="error mt-2 text-danger d-none" for="name"></label>
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Select Icon</label>
-                                <select class="form-control" id="icon" name="icon">
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                </select>
-                            </div> --}}
                             <div class="form-group">
                                 <label for="icon">Icon</label>
                                 <input type="text" class="form-control" id="icon" name="icon" required>
