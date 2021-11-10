@@ -26,26 +26,6 @@
                 <div class="col-12">
                     <div class="card profile">
                         <div class="card-body">
-                            @if (Session::has('error'))
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="alert alert-fill-danger">
-                                            <i class="mdi mdi-alert-circle"></i>
-                                            {{ Session::get('error') }}
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                            @if (Session::has('success'))
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="alert alert-fill-success">
-                                            <i class="mdi mdi-alert-circle"></i>
-                                            {{ Session::get('success') }}
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
                             <div class="row">
                                 <div class="col-sm-12 col-md-3">
                                     <div class="text-center pb-4 border profile__header shadow">
@@ -55,6 +35,7 @@
                                                 <div class="d-inline-block rounded-circle avatar--no-overlay">
                                                     <div class="d-inline-block">
                                                         <div class="avatar avatar-circle avatar--no-overlay">
+                                                            <img id="filepreview" class="rounded-circle mb-3 d-none" src="" width="120px" height="120px" alt="image">
                                                             @if (!$user->profile_photo_path)
                                                                 <div class="avatar-initial">
                                                                     @php
@@ -65,30 +46,31 @@
                                                                         } else {
                                                                             echo Str::upper(substr($concat[0], 0, 1));
                                                                         }
-                                                                    @endphp
-                                                                     {{-- {{ Str::upper(substr($user->fullname, 0, 1)) }}  --}}
+                                                                    @endphp 
                                                                 </div>
                                                             @else
-                                                                <img id="prof" src="{{ asset('images/faces/'.$user->photo) }}" alt="profile" class="d-inline-block rounded-circle avatar--no-overlay" width="100%">
+                                                                <img id="profileUser" src="{{ $user->profile_photo_path }}" alt="profile" class="d-inline-block rounded-circle avatar--no-overlay" width="100%" height="100%">
                                                             @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <input id="profile-img" type="file" accept="image/*" hidden accept="image/*">
-                                            <div id="btn_upload" class="btn btn-dark btn-photo"
-                                                style="right: 8px; bottom: -10px;">
+                                            <div id="btn_brows_file" class="btn btn-dark btn-photo"
+                                                style="right: 8px; bottom: -10px; visibility: visible">
                                                 <i class='mdi mdi-camera icon' ></i>
                                             </div>
+                                            <div id="btn_delete_file" class="btn btn-danger btn-photo"
+                                                style="right: 8px; bottom: -10px; visibility: hidden;">
+                                                <i class='mdi mdi-delete icon' ></i>
+                                            </div>
                                         </div>
-                                        <div class="px-2">
+                                        <button id="btn_upload_profile" class="btn btn-sm mx-auto btn-gradient-success d-none">
+                                            <i class="mdi mdi-upload"></i>
+                                            Upload
+                                        </button>
+                                        <div class="px-2 mt-4">
                                             <p class="font-12">Bureau Oberhaeuser is a design bureau focused on Information- and Interface Design. </p>
-                                        </div>
-                                        <div class="text-center">
-                                            <button class="btn btn-sm btn-gradient-success">
-                                                <i class="mdi mdi-pencil"></i>
-                                                Edit
-                                            </button>
                                         </div>
                                     </div>
                                     <div class="border-bottom py-4">
@@ -227,10 +209,21 @@
 @push('scripts')
     <script type="text/javascript">
         $(function() {
-            var users = @json($user),
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            })
+            var user = @json($user),
+                $inputfile = $('#profile-img'),
+                $reviewFile = $('#filepreview'),
+                $avatarInit = $('.avatar-initial'),
+                $delPhoto = $('#btn_delete_file'),
+                $profileU = $('#profileUser'),
+                $btnUpload = $('#btn_upload_profile'),
                 input = ['fullname', 'email', 'phone', 'pod', 'bod', 'religion', 'marital'];
             // config datetimepicker
-            for (const [key, value] of Object.entries(users)) {
+            for (const [key, value] of Object.entries(user)) {
                 if (jQuery.inArray(key, input) !== -1) {
                     var $inp = $(`input#${key}`)
                     if (key === 'bod') {
@@ -247,6 +240,96 @@
             $('#printPDF').on('click', function(e) {
                 event.preventDefault(); 
                 $('#formGeneratePDF').submit();
+            })
+
+            $("#btn_brows_file").click(function() {
+                var file,
+                    fd = new FormData();
+
+                $inputfile.trigger('click');
+                $inputfile.on('change', function(e) {
+                    var 
+                        files = e.target.files,
+                        reader = new FileReader(),
+                        done = function (url) {
+                            // Hidden avatar
+                            if (!user.profile_photo_path) {
+                                $avatarInit.addClass('d-none')
+                            } else {
+                                $profileU.addClass('d-none')
+                                $profileU.removeClass('d-inline-block')
+                            }
+                            // Preview Image Upload
+                            $reviewFile.removeClass('d-none')
+                            $btnUpload.removeClass('d-none')
+                            $reviewFile.attr('src', url);
+                            // Show up delete button image
+                            $("#btn_brows_file").css("visibility", "hidden")
+                            $delPhoto.css('visibility', 'visible')
+                        };
+
+                    if (files && files.length > 0) {
+                        file = files[0];
+                        reader.onload = function (e) {
+                            done(e.target.result);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                })
+
+                $btnUpload.click(function () {
+                    console.log(file);
+                    if (file) {
+                        // Append data 
+                        fd.append('file', file);
+                        fd.append('userID', user.id);
+                        // AJAX request 
+                        $.ajax({
+                            url: "/profile/upload",
+                            type: "POST",
+                            data: fd,
+                            contentType: false,
+                            processData: false,
+                            dataType: 'json',
+                            success: function(response){
+                                var {success, message} = response
+                                if (success) {
+                                    Swal.fire('Success!', message, 'success')
+                                    window.location.reload()
+                                } else {
+                                    Swal.fire({icon: 'error', title: 'Oops...', text: message})
+                                }
+                            },
+                            error: async function(err){
+                                const {message} = err.responseJSON;
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: message
+                                })
+                            }
+                        });
+                    } else {
+                        Swal.fire({icon: 'error', title: 'Oops...', text: "Please select a file."})
+                    }
+                })
+
+                /*
+                 * Button delete photo brows
+                */
+                $delPhoto.click(function() {
+                    if (!user.profile_photo_path) {
+                        $avatarInit.removeClass('d-none')
+                    } else {
+                        $profileU.addClass('d-inline-block')
+                        $profileU.removeClass('d-none')
+                    }
+                    $btnUpload.addClass('d-none')
+                    $reviewFile.addClass('d-none')
+                    $("#btn_brows_file").css("visibility", "visible")
+                    $delPhoto.css('visibility', 'hidden')
+                    $reviewFile.removeAttr('src')
+                })
             })
 
             // var $inputfile = $('#profile-img'),

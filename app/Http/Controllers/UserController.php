@@ -214,11 +214,61 @@ class UserController extends Controller
         // Delete user by ID
         $user = User::findOrFail($id)->delete();
 
-        $reponse = (object)[
+        $response = (object)[
             "success" => true,
             "message" => 'Deleted users successfully!'
         ];
 
-        return response()->json($reponse, 200);
+        return response()->json($response, 200);
     }
+
+    public function uploadProfile(Request $request)
+    {
+        $code = 200;
+
+        $validator = Validator::make($request->all(), [
+           'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:1048'
+        ]);
+  
+        if ($validator->fails()) {
+            $response = (object)[
+                "success" => false,
+                "message" => $validator->errors()->first('file') // Error response
+            ];
+            $code = 500;
+        } else {
+            if($request->file('file')) {
+                $file = $request->file('file');
+                $filename = time().'_'.$file->getClientOriginalName();
+    
+                // File extension
+                $extension = $file->getClientOriginalExtension();
+                // File upload location
+                $destinationPath = public_path('images/profile');
+                // Upload file
+                $file->move($destinationPath, $filename);
+                // File path
+                $filepath = url('images/profile/'.$filename);
+
+                // Update profile
+                $user = User::findOrFail($request->userID);
+                $user->profile_photo_path = $filepath;
+                $user->save();
+                
+                // Response
+                $response = (object)[
+                    "success" => true,
+                    "message" => 'Uploaded Successfully!'
+                ];
+            } else {
+                $response = (object)[
+                    "success" => false,
+                    "message" => 'File not uploaded.'
+                ];
+                return response()->json($response);
+            }
+        }
+  
+        return response()->json($response, $code);
+     }
 }

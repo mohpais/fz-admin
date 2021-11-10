@@ -19,9 +19,9 @@
             <div class="backdrop"></div>
             <div class="col-4 photo">
                 @if ($user->profile_photo_path)
-                    <img class="rounded-circle mx-auto" src="{{ asset('panel/images/faces/'.auth()->user()->profile_photo_path)}}" alt="">
+                    <img class="rounded-circle mx-auto" src="{{ $user->profile_photo_path }}" alt="" style="width: 150px; height: 150px">
                 @else
-                    <img class="rounded-circle mx-auto" src="{{ asset('panel/images/faces/default.png')}}" alt="">
+                    <img class="rounded-circle mx-auto" src="{{ asset('panel/images/faces/default.png')}}" alt="" style="width: 150px; height: 150px">
                 @endif
             </div>
             <div class="col-8 desc">

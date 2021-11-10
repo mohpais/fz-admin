@@ -6,8 +6,8 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="nav-profile-image">
-                    @if (auth()->user()->photo)
-                        <img src="{{ asset('panel/images/faces/'.auth()->user()->photo) }}" alt="image">
+                    @if (auth()->user()->profile_photo_path)
+                        <img src="{{ $user->profile_photo_path }}" alt="image">
                     @else
                         <img src="{{ asset('panel/images/faces/default.png') }}" alt="image">
                     @endif

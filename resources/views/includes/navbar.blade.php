@@ -27,8 +27,8 @@
                 <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                     aria-expanded="false">
                     <div class="nav-profile-img">
-                        @if (auth()->user()->photo)
-                            <img src="{{ asset('panel/images/faces/'.auth()->user()->photo) }}" alt="image">
+                        @if (auth()->user()->profile_photo_path)
+                            <img src="{{ $user->profile_photo_path }}" alt="image">
                         @else
                             <img src="{{ asset('panel/images/faces/default.png') }}" alt="image">
                         @endif
