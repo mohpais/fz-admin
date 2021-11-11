@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->foreign('corporate_id')->references('id')->on('corporates')->onDelete('cascade');
             $table->string('name', 100);
             $table->string('slug', 100);
+            $table->string('url', 100);
             $table->date('start_at')->nullable();
             $table->date('end_at')->nullable();
             $table->text('description')->nullable();

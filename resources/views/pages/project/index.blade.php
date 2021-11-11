@@ -42,7 +42,21 @@
                                                     <img src="{{ $item->thumbnail }}" alt="image">
                                                     <figcaption>
                                                         <h4>{{$item->name}}</h4>
-                                                        <p class="d-flex justify-content-between">
+                                                        <p class="d-flex">
+                                                            <button class="col-4 m-0 btn btn-sm bg-transparent text-white" style="border: none">
+                                                                <i class="mdi mdi-eye"></i>
+                                                                open
+                                                            </button>
+                                                            <button class="col-4 m-0 btn btn-sm bg-transparent text-white" style="border: none">
+                                                                <i class="mdi mdi-lead-pencil"></i>
+                                                                edit
+                                                            </button>
+                                                            <button class="col-4 m-0 btn btn-sm bg-transparent text-white" style="border: none">
+                                                                <i class="mdi mdi-delete"></i>
+                                                                delete
+                                                            </button>
+                                                        </p>
+                                                        {{-- <p class="d-flex justify-content-between">
                                                             <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
                                                                 <i class="mdi mdi-eye"></i>
                                                                 open
@@ -51,7 +65,7 @@
                                                                 <i class="mdi mdi-lead-pencil"></i>
                                                                 edit
                                                             </button>
-                                                        </p>
+                                                        </p> --}}
                                                     </figcaption>
                                                 </figure>
                                             </div>
@@ -175,6 +189,7 @@
                 </div>
             </div>
         </div>
+        @include('includes.footer')
     </div>
 @endsection
 

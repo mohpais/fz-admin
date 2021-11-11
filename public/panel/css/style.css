@@ -19264,7 +19264,7 @@ dl li {
 /* style for off-canvas menu*/
 @media screen and (max-width: 981px) {
     .navbar.fixed-top ~ .page-body-wrapper {
-        padding: 70px 0 ;
+        padding: 70px 0 0;
     }
 
     .sidebar {
