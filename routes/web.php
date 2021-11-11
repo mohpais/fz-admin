@@ -39,5 +39,5 @@ Route::post('/users/download-pdf', [UserController::class, 'generatePDF'])->name
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
 Route::post('/profile/upload', [UserController::class, 'uploadProfile'])->name('profile.upload');
 
-// Users navigations
+// Projects navigations
 Route::resource('/projects', ProjectController::class);

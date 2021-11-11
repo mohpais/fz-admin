@@ -17,7 +17,7 @@ class CreateCorporatesTable extends Migration
             $table->id();
             $table->string('name', 100)->unique();
             $table->string('position');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->date('join_at');
             $table->date('resign_at')->nullable();
             $table->text('jobdesc')->nullable();

@@ -43,7 +43,7 @@ $(function() {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "{{ route('corporates.index') }}"
+            url: "/corporates"
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
@@ -96,7 +96,7 @@ $(function() {
         // Get id form attribut a edit
         var corporate_id = $(this).data('id');
         $.ajax({
-            url: "{{ url('corporates') }}" + `/${corporate_id}/edit`,
+            url: `/corporates/${corporate_id}/edit`,
             type: "GET",
             success: function(response){
                 openModal(true, 'Edit Corporate', 'update-corporate', 'Update')
@@ -137,7 +137,7 @@ $(function() {
             if (result.isConfirmed) {
                 $.ajax({
                     type: "DELETE",
-                    url: "{{ url('corporates') }}" + "/" + corporate_id,
+                    url: `/corporates/${corporate_id}`,
                     success: function (data) {
                         if (data.success) {
                             Swal.fire(
@@ -177,7 +177,7 @@ $(function() {
                 ModalButton.html(`${spinner} Sending ...`);
                 $.ajax({
                     data: ModalForms.serialize(),
-                    url: "{{ route('corporates.store') }}",
+                    url: "/corporates",
                     type: "POST",
                     dataType: 'json',
                     success: function (response) {

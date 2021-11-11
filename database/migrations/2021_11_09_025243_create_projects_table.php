@@ -17,11 +17,13 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('corporate_id')->nullable();
             $table->foreign('corporate_id')->references('id')->on('corporates')->onDelete('cascade');
-            $table->string('name', 100)->nullable();
+            $table->string('name', 100);
+            $table->string('slug', 100);
             $table->date('start_at')->nullable();
             $table->date('end_at')->nullable();
             $table->text('description')->nullable();
             $table->boolean('active')->nullable()->default(false);
+            $table->string('thumbnail', 255)->nullable();
             $table->timestamps();
         });
     }

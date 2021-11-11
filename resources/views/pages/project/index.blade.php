@@ -36,7 +36,29 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row portfolio-grid">
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                                        @forelse ($projects as $item)
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                                                <figure class="effect-text-in">
+                                                    <img src="{{ $item->thumbnail }}" alt="image">
+                                                    <figcaption>
+                                                        <h4>{{$item->name}}</h4>
+                                                        <p class="d-flex justify-content-between">
+                                                            <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
+                                                                <i class="mdi mdi-eye"></i>
+                                                                open
+                                                            </button>
+                                                            <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
+                                                                <i class="mdi mdi-lead-pencil"></i>
+                                                                edit
+                                                            </button>
+                                                        </p>
+                                                    </figcaption>
+                                                </figure>
+                                            </div>
+                                        @empty
+                                            
+                                        @endforelse
+                                        {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-12">
                                             <figure class="effect-text-in">
                                                 <img src="{{ asset('panel/images/projects/hipmi.jpeg') }}" alt="image">
                                                 <figcaption>
@@ -144,7 +166,7 @@
                                                     </p>
                                                 </figcaption>
                                             </figure>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

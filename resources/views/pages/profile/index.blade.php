@@ -55,7 +55,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input id="profile-img" type="file" accept="image/*" hidden accept="image/*">
+                                            <input id="profile-img" type="file" hidden accept="image/*">
                                             <div id="btn_brows_file" class="btn btn-dark btn-photo"
                                                 style="right: 8px; bottom: -10px; visibility: visible">
                                                 <i class='mdi mdi-camera icon' ></i>
@@ -169,37 +169,8 @@
                 </div>
             </div>
         </div>
-    
-        <div class="modal fade" id="modal" tabindex="-1" data-backdrop="static" aria-labelledby="modal-showLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <form class="forms-modal" method="POST">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal-showLabel"></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="img-container">
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="preview"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                            <button id="crop" type="button" class="btn btn-gradient-primary btn-submit">Crop</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <!-- content-wrapper ends -->
+        @include('includes.footer')
     </div>
 @endsection
 
