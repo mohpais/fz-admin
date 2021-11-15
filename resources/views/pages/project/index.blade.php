@@ -56,131 +56,12 @@
                                                                 delete
                                                             </button>
                                                         </p>
-                                                        {{-- <p class="d-flex justify-content-between">
-                                                            <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                                <i class="mdi mdi-eye"></i>
-                                                                open
-                                                            </button>
-                                                            <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                                <i class="mdi mdi-lead-pencil"></i>
-                                                                edit
-                                                            </button>
-                                                        </p> --}}
                                                     </figcaption>
                                                 </figure>
                                             </div>
                                         @empty
                                             
                                         @endforelse
-                                        {{-- <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/hipmi.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>HIPMINET</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/kadin.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>KADIN</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/hipmi.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>HIPMINET</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/kadin.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>KADIN</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/hipmi.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>HIPMINET</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                                            <figure class="effect-text-in">
-                                                <img src="{{ asset('panel/images/projects/kadin.jpeg') }}" alt="image">
-                                                <figcaption>
-                                                    <h4>KADIN</h4>
-                                                    <p class="d-flex justify-content-between">
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-eye"></i>
-                                                            open
-                                                        </button>
-                                                        <button class="col-auto btn btn-sm bg-transparent text-white" style="border: none">
-                                                            <i class="mdi mdi-lead-pencil"></i>
-                                                            edit
-                                                        </button>
-                                                    </p>
-                                                </figcaption>
-                                            </figure>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -194,6 +75,5 @@
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
-    </script>
+    <script type="text/javascript"></script>
 @endpush
