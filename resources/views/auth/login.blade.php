@@ -11,7 +11,7 @@
                         </div>
                         <h4>Hello! let's get started</h4>
                         <h6 class="font-weight-light">Sign in to continue.</h6>
-                        <form class="pt-3" method="POST" action="{{ route('login') }}">
+                        <form id="form-login" class="pt-3" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
                                 <input type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -30,7 +30,7 @@
                                 @enderror
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
+                                <button type="button" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
                                     SIGN IN
                                 </button>
                             </div>
@@ -50,3 +50,24 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(function() {
+            var $btnLogin = $('.auth-form-btn'),
+                $fromLogin = $('#form-login');
+
+            $btnLogin.on('click', function(e) {
+                e.preventDefault();
+                let spinner = `
+                    <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                `;
+                $btnLogin.html(`${spinner} Please wait ...`);
+                $btnLogin.prop('disabled', true);
+                $fromLogin.submit();
+            })
+        })
+    </script>
+@endpush

@@ -37,7 +37,7 @@
                                 <div class="col-12">
                                     <div class="row portfolio-grid">
                                         @forelse ($projects as $item)
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-12">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                                 <figure class="effect-text-in">
                                                     <img src="{{ $item->thumbnail }}" alt="image">
                                                     <figcaption>
