@@ -16,9 +16,19 @@ class MessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $messages = Messages::latest()->get();
+        
+        // $messages = Messages::where([
+        //     ['name', '<>', NULL],
+        //     [function($query) use ($request) {
+        //         if (($search = $request->q)) {
+        //             $query->orWhere('name', 'LIKE', '%'.$search.'%')->get();
+        //         }
+        //     }]
+        // ])
+        // ->orderBy("id", "desc");
 
         return view('pages.message.index', compact('messages'));
     }

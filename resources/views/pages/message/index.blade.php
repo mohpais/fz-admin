@@ -11,9 +11,14 @@
                 <div class="row">
                     <div class="mail-list-container col-sm-12 col-md-4 pt-4 pb-4 border-right bg-white">
                         <div class="border-bottom pb-4 mb-3 px-3">
-                            <div class="form-group">
-                                <input class="form-control w-100" type="search" placeholder="Search mail" id="Mail-rearch">
-                            </div>
+                            <form class="d-flex align-items-center h-100" action="{{ route('messages.index') }}" method="GET" role="search">
+                                <div class="input-group">
+                                    <input id="q" name="q" type="text" class="form-control " placeholder="Search mail ...">
+                                    <button type="submit" class="input-group-prepend btn-inverse-success btn-icon">
+                                        <i class="input-group-text border-0 mdi mdi-magnify bg-transparent"></i>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                         @forelse ($messages as $item)
                             <div class="mail-list {{$item->isRead == 0 ? 'new_mail' : ''}}">
