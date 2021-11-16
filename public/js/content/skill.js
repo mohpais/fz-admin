@@ -103,7 +103,6 @@ $(function() {
 
     function openModal(resetForms, titleModal, buttonId, buttonTitle) {
         if (resetForms) ModalForms.trigger("reset");
-        // fetchIcon();
         ModalLabels.html(titleModal);
         ModalButton.attr('id', buttonId).html(buttonTitle);
         ModalNames.modal('show');
@@ -115,34 +114,4 @@ $(function() {
         ModalNames.modal('hide');
         $("html").removeClass("overflow-hidden")
     }
-
-    // function fetchIcon() {
-    //     $.ajax({
-    //         dataType: "json",
-    //         url: 'json/mdi-icons.json',
-    //         success: function(response) {
-    //             var items = [];
-    //             $.each( response, function( index, data ) {
-    //                 let value = data.name,
-    //                     // text = `<i class="mdi mdi-${value}"></i>`,
-    //                     text = `<svg height="12" width="12">
-    //                                 <path d="${data.path}" />
-    //                             </svg>`,
-    //                     options = `<option id="${value}" value="${value}"></option>`
-    //                 // items.push( "<option id='" + key + "'>" + val + "</li>" );
-    //                 // console.log(text);
-    //                 $('select#icon').append(options);
-    //                 $(`option#${value}`).append(text);
-    //             });
-                
-    //             // $( "<ul/>", {
-    //             //     "class": "my-new-list",
-    //             //     html: items.join( "" )
-    //             // }).appendTo( "body" );
-    //             // $('select#icon').append(`<option value="${optionValue}">
-    //             //     ${optionText}
-    //             // </option>`);
-    //         }
-    //     });
-    // }
 })

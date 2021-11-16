@@ -63,6 +63,12 @@
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
         </li> --}}
+        <li class="nav-item {{ Route::currentRouteName() == 'messages.index' ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('messages.index') }}">
+              <span class="menu-title">E-mail</span>
+              <i class="mdi mdi-email menu-icon"></i>
+            </a>
+        </li>
         <li class="nav-item {{ Route::currentRouteName() == 'list.skill' ? 'active' : '' }}">
             <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="{{ Route::currentRouteName() == 'list.skill' ? 'true' : 'false' }}"
                 aria-controls="general-pages">

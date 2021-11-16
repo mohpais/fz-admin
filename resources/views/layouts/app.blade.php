@@ -38,6 +38,10 @@
 </head>
 <body>
     <div class="container-scroller">
+        {{-- @dd($contents) --}}
+        {{-- @php
+            print_r($contents)
+        @endphp --}}
         @auth
             @include('includes.navbar')
         @endauth
@@ -75,7 +79,6 @@
     {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script> --}}
     <script src="{{ asset('panel/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('panel/ckeditor/adapters/jquery.js') }}"></script>
-    
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script> --}}
 

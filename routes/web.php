@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\MessagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,3 +42,6 @@ Route::post('/profile/upload', [UserController::class, 'uploadProfile'])->name('
 
 // Projects navigations
 Route::resource('/projects', ProjectController::class);
+
+// Messages navigations
+Route::resource('/messages', MessagesController::class);

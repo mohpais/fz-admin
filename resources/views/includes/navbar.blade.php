@@ -64,13 +64,40 @@
                 <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown"
                     aria-expanded="false">
                     <i class="mdi mdi-email-outline"></i>
-                    <span class="count-symbol bg-warning"></span>
+                    @if ($count > 0)
+                        <span class="count-symbol bg-warning"></span>
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                     aria-labelledby="messageDropdown">
                     <h6 class="p-3 mb-0">Messages</h6>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    @forelse ($messages as $item)
+                        <a href="{{ route('messages.show', $item->id) }}" class="dropdown-item preview-item">
+                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <h6 class="preview-subject ellipsis mb-1">{{$item->email}}</h6>
+                                <p class="text-gray font-14">Send you a message!</p>
+                                <small class="text-muted mb-0"> {{$item->time_ago}} </small>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @empty
+                        <a href="#" class="dropdown-item preview-item">
+                            <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                                <h6 class="preview-subject ellipsis mb-1">Tidak ada data!</h6>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    @endforelse
+                    {{-- <a class="dropdown-item preview-item">
+                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                            <h6 class="preview-subject ellipsis mb-1">putra.d.panjelo@gmail.com</h6>
+                            <p class="text-gray font-14">Send you a message!</p>
+                            <small class="text-muted mb-0"> 1 Minutes ago </small>
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div> --}}
+                    {{-- <a class="dropdown-item preview-item">
                         <div class="preview-thumbnail">
                             <img src="{{ asset('panel/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
                         </div>
@@ -99,8 +126,8 @@
                             <p class="text-gray mb-0"> 18 Minutes ago </p>
                         </div>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="p-3 mb-0 text-center">4 new messages</h6>
+                    <div class="dropdown-divider"></div> --}}
+                    <h6 class="p-3 mb-0 text-center">{{$count}} new messages</h6>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -176,6 +203,10 @@
 
 <script>
     $(document).ready(function () {
-        
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
     })
 </script>

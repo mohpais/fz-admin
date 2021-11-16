@@ -1,5 +1,29 @@
 @extends('layouts.app')
 
+@push('styles')
+    <style>
+        .form-group.password {
+            position: relative;
+        }
+
+        .form-group.password .btn:hover i{
+            color: #9b9b9b;
+        }
+
+        .form-group.password .btn i{
+            color: #b9b9b9;
+        }
+
+        .form-group.password .btn{
+            position: absolute;
+            padding-left: 10px;
+            padding-right: 10px;
+            top: 3px;
+            right: 6px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="container-fluid page-body-wrapper full-page-wrapper">
         <div class="content-wrapper d-flex align-items-center auth">
@@ -21,8 +45,9 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            <div class="form-group password">
                                 <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" id="password" name="password" required autocomplete="current-password">
+                                <button type="button" id="openHide" class="btn"></button>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -54,8 +79,29 @@
 @push('scripts')
     <script>
         $(function() {
-            var $btnLogin = $('.auth-form-btn'),
-                $fromLogin = $('#form-login');
+            var 
+                showpass = 0,
+                iconShow = '<i class="mdi mdi-eye"></i>',
+                iconHide = '<i class="mdi mdi-eye-off"></i>',
+                $btnLogin = $('.auth-form-btn'),
+                $fromLogin = $('#form-login'),
+                $inputPass = $('input#password'),
+                $btnShowHide = $('button#openHide');
+
+            $btnShowHide.click(function() {
+                switch (showpass) {
+                    case 0:
+                        showpass = 1
+                        $inputPass.attr('type', 'text')
+                        break;
+                    case 1:
+                        showpass = 0
+                        $inputPass.attr('type', 'password')
+                    default:
+                        break;
+                }
+                hideShow(showpass)
+            })
 
             $btnLogin.on('click', function(e) {
                 e.preventDefault();
@@ -68,6 +114,16 @@
                 $btnLogin.prop('disabled', true);
                 $fromLogin.submit();
             })
+
+            function hideShow(flag) {
+                if (flag === 0) {
+                    $btnShowHide.html(iconShow)
+                } else {
+                    $btnShowHide.html(iconHide)
+                }
+            }
+
+            hideShow(showpass)
         })
     </script>
 @endpush

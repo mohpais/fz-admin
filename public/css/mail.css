@@ -1,0 +1,181 @@
+.email-wrapper .mail-list-container {
+    border-left: 1px solid #ebedf2;
+    height: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.email-wrapper .mail-list-container .mail-list {
+    border-bottom: 1px solid #ebedf2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.email-wrapper .mail-list-container .mail-list .form-check {
+    margin-top: 12px;
+    width: 11%;
+    min-width: 20px;
+}
+
+.email-wrapper .mail-list-container .mail-list .content {
+    width: 83%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.email-wrapper .mail-list-container .mail-list .content .sender-name {
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    font-family: "ubuntu-regular", sans-serif;
+    max-width: 95%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.email-wrapper .mail-list-container .mail-list .content .message_text {
+    margin: 0;
+    max-width: 93%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #9c9fa6 !important;
+}
+
+.email-wrapper .mail-list-container .mail-list .content .message_text p {
+    font-size: 12px !important;
+}
+
+.email-wrapper .mail-list-container .mail-list .details {
+    -webkit-box-pack: end !important;
+    -ms-flex-pack: end !important;
+    justify-content: flex-end !important;
+    width: 5.5%;
+    display: flex !important;
+}
+
+.email-wrapper .mail-list-container .mail-list .details i {
+    margin: auto 0;
+    color: #ddd;
+}
+
+.email-wrapper .mail-list-container .mail-list .details i.favorite {
+    color: #fed713;
+}
+
+.email-wrapper .mail-list-container .mail-list.new_mail {
+    background: #434a54;
+    color: #ffffff;
+}
+
+.email-wrapper .message-body .attachments-sections ul {
+    list-style: none;
+    border-top: 1px solid #ebedf2;
+    padding: 30px 15px 20px;
+}
+
+.email-wrapper .message-body .attachments-sections ul li {
+    padding: 10px;
+    margin-right: 20px;
+    border: 1px solid #ebedf2;
+    border-radius: 5px;
+}
+
+.email-wrapper .message-body .attachments-sections ul li {
+    -webkit-box-align: stretch !important;
+    -ms-flex-align: stretch !important;
+    align-items: stretch !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+    display: inline-flex !important;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .thumb {
+    display: inline-block;
+    margin-right: 10px;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .thumb i {
+    font-size: 30px;
+    margin: 0;
+    color: #2e383e;
+}
+
+.email-wrapper .mail-view .message-body .attachments-sections .details .file-name {
+    color: #000;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details p.file-name {
+    display: block;
+    margin-bottom: 0;
+    color: #2e383e;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details .buttons {
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    display: flex !important;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details .buttons .file-size {
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details .buttons a {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details .buttons a {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.email-wrapper .message-body .attachments-sections ul li .details .buttons a:last-child {
+    margin-right: 0;
+}
+
+.message .sender-details {
+    padding: 20px 0 0;
+    border-bottom: 1px solid #ebedf2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.message .sender-details .details {
+    padding-bottom: 0;
+}
+
+.message .sender-details .details .sender-email {
+    margin-bottom: 20px;
+}
+
+.message .sender-details .details .msg-subject {
+    margin-bottom: 0;
+}
+
+.message .message-content {
+    padding: 40px 0;
+}
