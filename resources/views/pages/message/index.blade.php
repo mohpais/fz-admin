@@ -9,7 +9,7 @@
         <div class="content-wrapper">
             <div class="email-wrapper wrapper">
                 <div class="row">
-                    <div class="mail-list-container col-sm-12 col-md-4 pt-4 pb-4 border-right bg-white">
+                    <div class="mail-list-container col-sm-12 pt-4 pb-4 border-right bg-white">
                         <div class="border-bottom pb-4 mb-3 px-3">
                             <form class="d-flex align-items-center h-100" action="{{ route('messages.index') }}" method="GET" role="search">
                                 <div class="input-group">
@@ -20,7 +20,8 @@
                                 </div>
                             </form>
                         </div>
-                        @forelse ($messages as $item)
+                        <div id="list-message"></div>
+                        {{-- @forelse ($messages as $item)
                             <div class="mail-list {{$item->isRead == 0 ? 'new_mail' : ''}}">
                                 <div class="form-check"> <label class="form-check-label"> <input type="checkbox" class="form-check-input"> <i class="input-helper"></i></label></div>
                                 <div class="content">
@@ -39,7 +40,7 @@
                                     <h6>Tidak ada data!</h6>
                                 </div>
                             </div>
-                        @endforelse
+                        @endforelse --}}
                         {{-- <div class="mail-list new_mail">
                             <div class="form-check"> <label class="form-check-label"> <input type="checkbox" class="form-check-input" checked=""> <i class="input-helper"></i></label></div>
                             <div class="content">
@@ -171,37 +172,104 @@
                             </div>
                         </div> --}}
                     </div>
-                    <div class="mail-view d-none d-md-block col-md-8 col-lg-8 bg-white">
+                    <div class="mail-view d-none col-md-8 col-lg-8 bg-white"></div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        @include('includes.footer')
+        <!-- partial -->
+    </div>
+@endsection
+
+@push('scripts')
+    <script>
+        $(function() {
+            var
+                data = @json($messages),
+                $listSide = $('#list-message'),
+                $container = $('.mail-list-container'),
+                $mailView = $('.mail-view');
+                
+            function renderListMessage() {
+                var 
+                    response = '';
+                
+                for (let i = 0; i < data.length; i++) {
+                    const el = data[i];
+                    const mailList = `
+                        <div id="mail-container${i}" data-usage="${i}" class="mail-list ${el.isRead === 0 ? 'new_mail' : ''}">
+                            <div class="form-check"> 
+                                <label class="form-check-label"> <input type="checkbox" class="form-check-input" checked=""> 
+                                    <i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="content">
+                                <p class="sender-name">${el.name}</p>
+                                <p class="message_text">Change the password for your Microsoft Account using the security code 35525</p>
+                            </div>
+                            <div class="details">
+                                <i class="mdi mdi-star favorite"></i>
+                            </div>
+                        </div>
+                    `
+                    response += mailList;
+                }
+
+                $listSide.append(response)
+            }
+
+            renderListMessage()
+
+            $listSide.children().each(function(index, value) {
+                var $currentElement = $(this);
+                $currentElement.on("click", onClickMessage)
+            })
+
+            function onClickMessage(zEvent) {
+                var $currentElement = $(this);
+                
+                $listSide.children().each(function(index, value) {
+                    var $el = $(this);
+                    if (indexMessage !== index) {
+                        console.log('now lock at this! 1');
+                        $el.removeClass('new_mail')
+                    } else {
+                        console.log('now lock at this! 2');
+                        $el.addClass('new_mail');
+                    }
+                })
+                // $currentElement.addClass('new_mail');
+
+                var indexMessage  = $currentElement.attr("data-usage"),
+                    dataMessage = data[indexMessage],
+                    view = `
                         <div class="row">
                             <div class="col-md-12 mb-4 mt-4">
                                 <div class="btn-toolbar">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-reply text-primary"></i> Reply</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-reply-all text-primary"></i>Reply All</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-share text-primary"></i>Forward</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-attachment text-primary"></i>Attach</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-delete text-primary"></i>Delete</button>
-                                </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-reply text-primary"></i> Reply</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-reply-all text-primary"></i>Reply All</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-share text-primary"></i>Forward</button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-attachment text-primary"></i>Attach</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><i class="mdi mdi-delete text-primary"></i>Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="message-body">
                             <div class="sender-details">
                                 <div class="details">
-                                    <h4 class="msg-subject ellipsis mb-1"> Weekly Update - Week 19 (May 8, 2017 - May 14, 2017) </h4>
-                                    <p class="sender-email"> Sarah Graves <a href="#">itsmesarah268@gmail.com</a> &nbsp;<i class="mdi mdi-account-multiple-plus"></i>
+                                    <h4 class="msg-subject ellipsis mb-1"> ${dataMessage.subject} (May 8, 2017 - May 14, 2017) </h4>
+                                    <p class="sender-email"> ${dataMessage.name} <a href="#">${dataMessage.email}</a> &nbsp;<i class="mdi mdi-account-multiple-plus"></i>
                                     </p>
                                 </div>
                             </div>
                             <hr class="horizontal dark">
-                            <div class="message-content">
-                                <p>Hi Emily,</p>
-                                <p>This week has been a great week and the team is right on schedule with the set deadline. The team has made great progress and achievements this week. At the current rate we will be able to deliver the product right on time and meet the quality that is expected of us. Attached are the seminar report held this week by our team and the final product design that needs your approval at the earliest.</p>
-                                <p>For the coming week the highest priority is given to the development for <a href="http://www.bootstrapdash.com/" target="_blank">http://www.bootstrapdash.com/</a> once the design is approved and necessary improvements are made.</p>
-                                <p><br><br>Regards,<br>Sarah Graves</p>
-                            </div>
+                            <div class="message-content">${dataMessage.body}</div>
                             <div class="attachments-sections">
                                 <ul>
                                     <li>
@@ -229,13 +297,12 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        @include('includes.footer')
-        <!-- partial -->
-    </div>
-@endsection
+                    `
+                $mailView.removeClass("d-none");
+                $mailView.html(view);
+                $container.addClass("col-md-4");
+            }
+            
+        })
+    </script>
+@endpush

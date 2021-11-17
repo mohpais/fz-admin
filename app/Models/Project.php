@@ -31,7 +31,7 @@ class Project extends Model
                     return $mathces[1] + 1;
                 }, $max);
             }
-            return "{$slug}-2";
+            return "{$slug}";
         }
 
         return $slug;

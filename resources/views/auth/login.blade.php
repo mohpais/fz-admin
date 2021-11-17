@@ -56,6 +56,7 @@
                             </div>
                             <div class="mt-3">
                                 <button type="button" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">
+                                    <i class="mdi mdi-login"></i>
                                     SIGN IN
                                 </button>
                             </div>
