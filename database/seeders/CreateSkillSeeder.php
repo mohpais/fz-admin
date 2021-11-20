@@ -17,12 +17,14 @@ class CreateSkillSeeder extends Seeder
         $data = ['PHP', 'Python', 'SQLServer', 'PostgreSQL'];
         $skills = array();
         foreach ($data as $item) {
-            $obj = (object)array(
+            // $obj = (object)array(
+            //     'name' => $item
+            // );
+            // array_push($skills, $obj);
+            Skill::create([
                 'name' => $item
-            );
-            array_push($skills, $obj);
+            ]);
         }
         
-        Skill::factory()->create($data);
     }
 }

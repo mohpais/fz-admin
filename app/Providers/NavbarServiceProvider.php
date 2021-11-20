@@ -45,10 +45,6 @@ class NavbarServiceProvider extends ServiceProvider
             ];
             array_push($this->messages, $obj);
         }
-        // $this->messages = $msg;
-        // foreach ($this->messages as $value) {
-        //     $this->messages->time_ago = $this->time_elapsed_string($value->updated_at);
-        // }
 
         view()->composer('includes.navbar', function ($view) {
             $view->with(['messages' => $this->messages, 'count' => sizeof($this->messages)]);

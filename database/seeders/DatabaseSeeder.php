@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('secret'),
             'religion' => 'Islam'
         ]);
+        
+        $this->call(CreateSkillSeeder::class);
     }
 }
