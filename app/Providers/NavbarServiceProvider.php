@@ -36,7 +36,7 @@ class NavbarServiceProvider extends ServiceProvider
     {
         $this->messages = array();
 
-        $msg = Messages::where('isRead', '0')->latest()->get();
+        // $msg = Messages::where('isRead', '0')->latest()->get();
         // foreach ($msg as $value) {
         //     $obj = (object)[
         //         "id" => $value->id,
