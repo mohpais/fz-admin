@@ -37,14 +37,14 @@ class NavbarServiceProvider extends ServiceProvider
         $this->messages = array();
 
         $msg = Messages::where('isRead', '0')->latest()->get();
-        foreach ($msg as $value) {
-            $obj = (object)[
-                "id" => $value->id,
-                "email" => $value->email,
-                "time_ago" =>$this->time_elapsed_string($value->updated_at)
-            ];
-            array_push($this->messages, $obj);
-        }
+        // foreach ($msg as $value) {
+        //     $obj = (object)[
+        //         "id" => $value->id,
+        //         "email" => $value->email,
+        //         "time_ago" =>$this->time_elapsed_string($value->updated_at)
+        //     ];
+        //     array_push($this->messages, $obj);
+        // }
 
         view()->composer('includes.navbar', function ($view) {
             $view->with(['messages' => $this->messages, 'count' => sizeof($this->messages)]);
